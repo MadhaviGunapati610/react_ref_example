@@ -1,15 +1,14 @@
 import {INPUT_VALUE} from './actionTypes';
-import { inputValue } from './actions';
 
 const initialState = {
-value: ''
+value: 'madhavi'
 }
 
 export const reducer = (state=initialState, action)=> {
 switch(action.type){
   case INPUT_VALUE: return {
     ...state,
-    value: inputValue.payload
+    value: action.payload
   }
   default: return state
 }

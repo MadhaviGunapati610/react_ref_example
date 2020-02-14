@@ -5,20 +5,25 @@ import FormComponent from "./components/FormComponent";
 import { inputValue } from "./redux";
 
 class App extends React.Component{
-  
-  handleInputChange=(e)=>{
-  e.preventDefault();
-  this.setState({value:e.target.value})
+  state={
+    output: ""
   }
+  // handleInputChange=(e)=>{
+  // e.preventDefault();
+  // this.setState({value:e.target.value})
+  // }
   handleSubmit=(e)=>{
     e.preventDefault();
     console.log("Form submited!");
+    console.log(this.props.value);
+    this.setState({...this.state.output, output:this.props.updateValue})
   }
   render() {
   return (
     <div className="App">
-      <FormComponent value={state.value} 
-      handleInputChange={this.handleInputChange}
+      <FormComponent
+      output = {this.state.output}
+      handleInputChange={(value)=>this.props.handleInputChange(value)}
       handleSubmit={this.handleSubmit}/>
     </div>
   );
@@ -28,13 +33,13 @@ class App extends React.Component{
 const mapStateToProps = (state) => {
   console.log(state, "map");
   return {
-    value:state
+    updateValue:state.value
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
 return {
-  value: ()=>dispatch(inputValue())
+  handleInputChange: (value)=>dispatch(inputValue(value))
 }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(App);

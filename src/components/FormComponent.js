@@ -1,14 +1,15 @@
 import React from 'react';
 
 const FormComponent =(props)=>{
+  console.log(props)
 
 return(
 <div>
-<p>Output : {props.value}</p>
+<p>Output : {props.output}</p>
 <form onSubmit={props.handleSubmit}>
 <input type="text"
 value={props.value}
-onChange={props.handleInputChange}/>
+onChange={(e)=>props.handleInputChange(e.target.value)}/>
 <input type="submit" value="Submit" />
 </form>
 </div>
