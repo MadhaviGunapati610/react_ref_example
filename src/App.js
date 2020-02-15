@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import ComponentRefs from "./components/ComponentRefs";
  
 class App extends React.Component{
 constructor(props){
@@ -19,9 +20,6 @@ handleSubmit=(e)=>{
   e.preventDefault();
 this.setState({output:this.state.value});
 }
-
-
-
   render () {
   return (
     <div className="App">
@@ -30,6 +28,8 @@ this.setState({output:this.state.value});
 <input type="text" value={this.value} onChange={this.handleInput}/>
 <input type="submit" value="submit"/>
       </form>
+      <hr/><hr/>
+      <ComponentRefs/>
     </div>
   );
 }
